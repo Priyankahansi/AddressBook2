@@ -1,7 +1,16 @@
 package com.bridgelabz;
 
-public class ContactPerson {
+public class AddressBookMain {
     public static void main(String[] args) {
         System.out.println("welcome to addressbook");
+        Contacts.newContact(0);
+        System.out.println(Contacts.contacts[0]);
     }
 }
+
+
+
+
+
+
+
