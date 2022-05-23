@@ -1,107 +1,96 @@
 package com.bridgelabz;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Contacts {
-    static Contacts contacts[] = new Contacts[2];
-    static String firstName;
-    static String lastName;
-    static String fullAddress;
-    static long zip;
-    static long phoneNumber;
-    static String email;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private String phoneNumber;
+    private String address;
+    private int zip;
+    private String state;
+    private String city;
+
 
     public Contacts() {
-        Scanner input = new Scanner(System.in);//taking input from user
-
-        System.out.println("Enter first Name");
-        firstName = input.next();
-
-        System.out.println("Enter last Name");
-        lastName = input.next();
-
-        System.out.println("Enter full Address wit city and state");
-        fullAddress = input.next();
-
-        System.out.println("Enter Email");
-        email = input.next();
-
-        System.out.println("Enter Zip Code");
-        zip = input.nextLong();
-
-        System.out.println("Enter Phone Number");
-        phoneNumber = input.nextLong();
     }
 
-    public static void newContact(int index) {
-        if (index < contacts.length) {
-            contacts[index] = new Contacts();
-        } else {
-            System.out.println("Contact list is full");
-        }
-        return;
-    }
-
-    @Override
-    public String toString() {
-        return "AddingContact;[getFirstName()=" + getFirstName() + ",getLastName()=" + getLastName() + ",getFullAddress()=" + getFullAddress() + "getzip()=" + getZip() + "getPhoneNumber()=" + getPhoneNumber() + "getEmail()=" + getEmail() + "]";
-    }
-
-    private String getFirstName() {
-        return firstName;
-    }
-
-    private String getLastName() {
-        return lastName;
-    }
-
-    private String getFullAddress() {
-        return fullAddress;
-    }
-
-    private String getEmail() {
-        return email;
-    }
-
-    private long getZip() {
-        return zip;
-    }
-
-    private long getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setFullAddress(String fullAddress) {
-        this.fullAddress = fullAddress;
-    }
-
-    public void setZip(long zip) {
-        this.zip = zip;
-    }
-
-    public void setPhoneNumber(long phoneNumber) {
+    public Contacts(String firstname, String lastname, String email,
+                    String phoneNumber, String address, int zip, String state, String city) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
         this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.zip = zip;
+        this.state = state;
+        this.city = city;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getZip() {
+        return zip;
+    }
+
+    public void setZip(int zip) {
+        this.zip = zip;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
 }
-
-
-
-
-
-
-
-
