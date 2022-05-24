@@ -2,6 +2,7 @@ package com.bridgelabz;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Contacts {
     private String firstname;
@@ -93,4 +94,18 @@ public class Contacts {
         this.city = city;
     }
 
+    @Override
+    public String toString() {
+        return "Contacts{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", address='" + address + '\'' +
+                ", zip=" + zip +
+                ", state='" + state + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }
+
