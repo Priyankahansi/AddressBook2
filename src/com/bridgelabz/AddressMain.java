@@ -5,16 +5,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AddressMain {
+
+    List<Contacts> contactsList = new ArrayList<>();
+    void addNewContact(){
+        Contacts contacts = new Contacts();
+        contacts.addContact();
+        contactsList.add(contacts);
+        contacts.displayContact();
+    }
     public static void main(String[] args) {
-        Contacts contact = new Contacts("Praju", "Hanasi", "aaa@123",
-                "99999", "Hosa oni", 580001, "karanataka", "Dharwad");
-
-        Contacts contact1 = new Contacts("Paru", "Hanasi", "aaa@123",
-                "99999", "Hosa oni", 580001, "karanataka", "Dharwad");
-
-        List<Contacts> contactsList = new ArrayList<>();
-        contactsList.add(contact);
-        contactsList.add(contact1);
-        System.out.println(contactsList);
+        AddressMain addressBook = new AddressMain();
+        addressBook.addNewContact();
     }
 }

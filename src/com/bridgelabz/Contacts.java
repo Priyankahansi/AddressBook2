@@ -14,6 +14,8 @@ public class Contacts {
     private String state;
     private String city;
 
+    Scanner scanner = new Scanner(System.in);
+
 
     public Contacts() {
     }
@@ -28,6 +30,30 @@ public class Contacts {
         this.zip = zip;
         this.state = state;
         this.city = city;
+    }
+    void addContact(){
+        System.out.println("Enter the firstName");
+        firstname=scanner.next();
+        System.out.println("Enter the Lastname");
+        lastname=scanner.next();
+        System.out.println("Enter the Email");
+        email = scanner.next();
+        System.out.println("Enter the phonenumber");
+        phoneNumber=scanner.next();
+        System.out.println("Enter the Address");
+        address=scanner.next();
+        System.out.println("Enter the Zip");
+        zip=scanner.nextInt();
+        System.out.println("Enter the state");
+        state=scanner.next();
+        System.out.println("Enter the city");
+        city=scanner.next();
+    }
+
+    void displayContact(){
+        System.out.println("FirstName:"+firstname+"\n"+"Lastname:"
+                +lastname+"\n"+"Phonenumber:"+"\n"+phoneNumber+"Address:"+address+"\n"
+                +"zip:"+zip+"\n"+"state:"+state+"\n"+"city"+city);
     }
 
     public String getFirstname() {
