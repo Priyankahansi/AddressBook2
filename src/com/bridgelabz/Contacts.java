@@ -60,7 +60,6 @@ public class Contacts {
             AddressMain.contactsMap.put(contacts1.getPhoneNumber(), contacts1);
         }
     }
-
     void displayContact() {
         System.out.println("FirstName:" + firstname + "\n" + "Lastname:"
                 + lastname + "\n" + "Phonenumber:" + "\n" + phoneNumber + "Address:" + address + "\n"
@@ -145,4 +144,11 @@ public class Contacts {
                 '}';
     }
 }
+
+
+
+
+
+
+
 
