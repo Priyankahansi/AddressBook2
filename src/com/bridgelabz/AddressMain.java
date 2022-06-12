@@ -32,7 +32,7 @@ public class AddressMain {
         Contacts c1 = new Contacts("Praju", "Hanasi", "praju@123",
                 "9900", "Hosa oni",
                 580001, "Maharastra", "Mumbai");
-        Contacts c2 = new Contacts("Paru", "Hanasi", "paru@123",
+        Contacts c2 = new Contacts("Aaru", "Hanasi", "paru@123",
                 "8800", "Hosa oni",
                 580001, "Karnataka", "Dharwad");
         Contacts c3 = new Contacts("Chinnu", "Hanasi", "Chinnu@123",
@@ -43,10 +43,10 @@ public class AddressMain {
         addressBook1.contactsList.add(c2);
         addressBook1.contactsList.add(c3);
 
-        Contacts c4 = new Contacts("Paarth", "Hanasi", "paarth@123",
+        Contacts c4 = new Contacts("Baarth", "Hanasi", "paarth@123",
                 "9900", "Hosa oni",
                 580001, "Maharastra", "Pune");
-        Contacts c5 = new Contacts("Pratham", "Hanasi", "praju@123",
+        Contacts c5 = new Contacts("Ratham", "Hanasi", "praju@123",
                 "9900", "Hosa oni",
                 580001, "Karnataka", "Dharwad");
         Contacts c6 = new Contacts("Pavan", "Hanasi", "pavan@123",
@@ -61,18 +61,37 @@ public class AddressMain {
         addressBookMap.put("AddressBook2", addressBook2);
 
 
-        for (Map.Entry<String, AddressBook> entry : addressBookMap.entrySet()) {
-            AddressBook addressBook = entry.getValue();
-            List<Contacts> contactsList = addressBook.contactsList.stream().
-                    filter(x -> x.getCity().equals("Mumbai")).collect(Collectors.toList());
-            System.out.println(contactsList);
+//        for (Map.Entry<String, AddressBook> entry : addressBookMap.entrySet()) {
+//            AddressBook addressBook = entry.getValue();
+//            List<Contacts> contactsList = addressBook.contactsList.stream().
+//                    filter(x -> x.getCity().equals("Mumbai")).collect(Collectors.toList());
+//            System.out.println(contactsList);
+//        }
+
+//        AddressMain addressMain = new AddressMain();
+//        addressMain.getCount("Maharastra");
+
+
+//        for (Map.Entry<String, AddressBook> addressBookEntry : addressBookMap.entrySet()) {
+//            AddressBook value = addressBookEntry.getValue();
+//            List<Contacts> sortedList = value.contactsList.stream().
+//                    sorted(Comparator.comparing(Contacts::getFirstname)).collect(Collectors.toList());
+//            System.out.println(sortedList);
+//        }
+
+        for (Map.Entry<String, AddressBook> addressBookEntry : addressBookMap.entrySet()) {
+            AddressBook addressBook = addressBookEntry.getValue();
+            List<Contacts> sortedList = addressBook.contactsList.stream().
+                    sorted(Comparator.comparing(Contacts::getFirstname)).collect(Collectors.toList());
+            System.out.println(sortedList);
         }
-
-        AddressMain addressMain = new AddressMain();
-         addressMain.getCount("Maharastra");
-
     }
 }
+
+
+
+
+
 
 
 
