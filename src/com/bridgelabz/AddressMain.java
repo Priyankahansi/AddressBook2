@@ -51,7 +51,7 @@ public class AddressMain {
                 580001, "Karnataka", "Dharwad");
         Contacts c6 = new Contacts("Pavan", "Hanasi", "pavan@123",
                 "9900", "Hosa oni",
-                580001, "Delhi", "agra");
+                580001, "Delhi", "Agra");
         AddressBook addressBook2 = new AddressBook();
         addressBook2.contactsList.add(c4);
         addressBook2.contactsList.add(c5);
@@ -82,11 +82,16 @@ public class AddressMain {
         for (Map.Entry<String, AddressBook> addressBookEntry : addressBookMap.entrySet()) {
             AddressBook addressBook = addressBookEntry.getValue();
             List<Contacts> sortedList = addressBook.contactsList.stream().
-                    sorted(Comparator.comparing(Contacts::getFirstname)).collect(Collectors.toList());
+                    sorted(Comparator.comparing(Contacts::getCity)).collect(Collectors.toList());
             System.out.println(sortedList);
         }
     }
 }
+
+
+
+
+
 
 
 
