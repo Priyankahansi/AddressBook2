@@ -5,93 +5,73 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class AddressMain {
-
-    static Map<String, Contacts> contactsMap = new HashMap<>();
-
     static Map<String, AddressBook> addressBookMap = new HashMap<>();
 
-    static Scanner scanner = new Scanner(System.in);
+  static   Map<String, List<Contacts>> cityContactsMap = new HashMap<>();
 
-    static void addNewContact() {
-        Contacts contacts = new Contacts();
-        contacts.addContact();
-        contactsMap.put(contacts.getPhoneNumber(), contacts);
-    }
 
-    private static void editContact() {
-        System.out.println("Enter the contactNumber");
-        String phoneNumber = scanner.next();
-        Contacts contacts = contactsMap.get(phoneNumber);
-        if (contacts != null) {
-            contacts.addContact();
-        } else {
-            System.out.println("The contact is not present in Addressbook");
-        }
-    }
+    static Map<String, List<Contacts>> stateContactsMap = new HashMap<>();
 
-    private static void showContact() {
-        System.out.println("Enter the contactNumber");
-        String phoneNumber = scanner.next();
-        Contacts contacts = contactsMap.get(phoneNumber);
-        if (contacts != null) {
-            contacts.displayContact();
-        } else {
-            System.out.println("The contact is not present in AddressBook");
-        }
-    }
-
-    private static void deleteContact() {
-        System.out.println("Enter the ContactNumber");
-        String phoneNumber = scanner.next();
-        Contacts contacts = contactsMap.get(phoneNumber);
-        if (contacts != null) {
-            contactsMap.remove(contacts);
-        } else {
-            System.out.println("The contact is not present in Addressbook");
-        }
-    }
-    static void addNewAddressBook() {
-        AddressBook addressBook = new AddressBook();
-        addressBook.addAddressBook();
-        addressBookMap.put(addressBook.getAddressBookName(), addressBook);
-    }
-    static void contactOperations() {
-        int choice;
-        do {
-            System.out.println("Enter the choice");
-            System.out.println("1:ADD ADDRESSBOOK");
-            System.out.println("2:ADD CONTACT");
-            System.out.println("3:EDIT CONTACT");
-            System.out.println("4:DISPLAY CONTACT");
-            System.out.println("5:DELETE CONTACT");
-            choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    addNewAddressBook();
-                    break;
-                case 2:
-                    addNewContact();
-                    break;
-                case 3:
-                    editContact();
-                    break;
-                case 4:
-                    showContact();
-                    break;
-                case 5:
-                    deleteContact();
-                default:
-                    System.out.println("Enter the choices between 1-5");
-                    contactOperations();
-            }
-        } while (choice != 5);
-    }
     public static void main(String[] args) {
+        Contacts c1 = new Contacts("Praju", "Hanasi", "praju@123",
+                "9900", "Hosa oni",
+                580001, "Maharastra", "Mumbai");
+        Contacts c2 = new Contacts("Paru", "Hanasi", "paru@123",
+                "8800", "Hosa oni",
+                580001, "Karnataka", "Dharwad");
+        Contacts c3 = new Contacts("Chinnu", "Hanasi", "Chinnu@123",
+                "7700", "Hosa oni",
+                580001, "Delhi", "Delhi");
+        Contacts c4 = new Contacts("Paarth", "Hanasi", "paarth@123",
+                "9900", "Hosa oni",
+                580001, "Maharastra", "Pune");
+        Contacts c5 = new Contacts("Pratham", "Hanasi", "praju@123",
+                "9900", "Hosa oni",
+                580001, "Karnataka", "Dharwad");
+        Contacts c6 = new Contacts("Pavan", "Hanasi", "pavan@123",
+                "9900", "Hosa oni",
+                580001, "Delhi", "agra");
 
-        AddressMain addressMain= new AddressMain();
-        contactOperations();
-        AddressBook addressBook = new AddressBook();
+        AddressBook addressBook1 = new AddressBook();
+        addressBook1.contactsList.add(c1);
+        addressBook1.contactsList.add(c2);
+        addressBook1.contactsList.add(c3);
+        addressBook1.contactsList.add(c3);
+        addressBook1.contactsList.add(c4);
+        addressBook1.contactsList.add(c5);
+
+        addressBookMap.put("Addressbook1", addressBook1);
+
+        addressBook1.contactsList.stream().forEach(x->{
+            if(stateContactsMap.containsKey(x.getState())){
+                List<Contacts> contactsList =stateContactsMap.get(x.getState());
+                contactsList.add(x);
+            }
+            else {
+                List<Contacts> contactsList=new ArrayList<>();
+                contactsList.add(x);
+                stateContactsMap.put(x.getState(),contactsList);
+            }
+        });
+        addressBook1.contactsList.stream().forEach(x->{
+            if(cityContactsMap.containsKey(x.getCity())){
+                List<Contacts> contactsList = cityContactsMap.get(x.getCity());
+                contactsList.add(x);
+            }
+            else{
+                List<Contacts> contactsList=new ArrayList<>();
+                contactsList.add(x);
+                cityContactsMap.put(x.getCity(),contactsList);
+            }
+        });
+
+        System.out.println(addressBook1.contactsList);
+        System.out.println("state Contact map");
+        System.out.println(stateContactsMap);
+        System.out.println("City Contact Map");
+        System.out.println(cityContactsMap);
     }
+
 }
 
 
