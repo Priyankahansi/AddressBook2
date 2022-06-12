@@ -8,6 +8,8 @@ public class AddressMain {
 
     static Map<String, Contacts> contactsMap = new HashMap<>();
 
+    static Map<String, AddressBook> addressBookMap = new HashMap<>();
+
     static Scanner scanner = new Scanner(System.in);
 
     static void addNewContact() {
@@ -48,41 +50,52 @@ public class AddressMain {
             System.out.println("The contact is not present in Addressbook");
         }
     }
-
+    static void addNewAddressBook() {
+        AddressBook addressBook = new AddressBook();
+        addressBook.addAddressBook();
+        addressBookMap.put(addressBook.getAddressBookName(), addressBook);
+    }
     static void contactOperations() {
         int choice;
         do {
             System.out.println("Enter the choice");
-            System.out.println("1:ADD CONTACT");
-            System.out.println("2:EDIT CONTACT");
-            System.out.println("3:DISPLAY CONTACT");
-            System.out.println("4:DELETE CONTACT");
+            System.out.println("1:ADD ADDRESSBOOK");
+            System.out.println("2:ADD CONTACT");
+            System.out.println("3:EDIT CONTACT");
+            System.out.println("4:DISPLAY CONTACT");
+            System.out.println("5:DELETE CONTACT");
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    addNewContact();
+                    addNewAddressBook();
                     break;
                 case 2:
-                    editContact();
+                    addNewContact();
                     break;
                 case 3:
-                    showContact();
+                    editContact();
                     break;
                 case 4:
-                    deleteContact();
+                    showContact();
                     break;
+                case 5:
+                    deleteContact();
                 default:
                     System.out.println("Enter the choices between 1-5");
                     contactOperations();
             }
         } while (choice != 5);
     }
-
     public static void main(String[] args) {
-        AddressMain addressBook = new AddressMain();
+
+        AddressMain addressMain= new AddressMain();
         contactOperations();
+        AddressBook addressBook = new AddressBook();
     }
 }
+
+
+
 
 
 
