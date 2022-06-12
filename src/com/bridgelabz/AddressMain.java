@@ -3,11 +3,12 @@ package com.bridgelabz;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 
 public class AddressMain {
     static Map<String, AddressBook> addressBookMap = new HashMap<>();
 
-  static   Map<String, List<Contacts>> cityContactsMap = new HashMap<>();
+    static Map<String, List<Contacts>> cityContactsMap = new HashMap<>();
 
 
     static Map<String, List<Contacts>> stateContactsMap = new HashMap<>();
@@ -42,39 +43,15 @@ public class AddressMain {
 
         addressBookMap.put("Addressbook1", addressBook1);
 
-        addressBook1.contactsList.stream().forEach(x->{
-            if(stateContactsMap.containsKey(x.getState())){
-                List<Contacts> contactsList =stateContactsMap.get(x.getState());
-                contactsList.add(x);
-            }
-            else {
-                List<Contacts> contactsList=new ArrayList<>();
-                contactsList.add(x);
-                stateContactsMap.put(x.getState(),contactsList);
-            }
-        });
-        addressBook1.contactsList.stream().forEach(x->{
-            if(cityContactsMap.containsKey(x.getCity())){
-                List<Contacts> contactsList = cityContactsMap.get(x.getCity());
-                contactsList.add(x);
-            }
-            else{
-                List<Contacts> contactsList=new ArrayList<>();
-                contactsList.add(x);
-                cityContactsMap.put(x.getCity(),contactsList);
-            }
-        });
 
-        System.out.println(addressBook1.contactsList);
-        System.out.println("state Contact map");
-        System.out.println(stateContactsMap);
-        System.out.println("City Contact Map");
-        System.out.println(cityContactsMap);
+        for (Map.Entry<String, AddressBook> entry : addressBookMap.entrySet()) {
+            AddressBook addressBook = entry.getValue();
+            List<Contacts> contactsList = addressBook.contactsList.stream().
+                    filter(x -> x.getCity().equals("Mumbai")).collect(Collectors.toList());
+            System.out.println(contactsList);
+        }
     }
-
 }
-
-
 
 
 
